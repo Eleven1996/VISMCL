@@ -20,6 +20,6 @@ a circle packing graph representing the information
 plot circle packing graph
 }
 \examples{
-vismcl(sprintf("\%s/R/MCL_example_output",getwd()),TRUE,"red")
-vismcl(sprintf("\%s/R/MCL_example_output",getwd()),FALSE)
+cat("a aa\n",file = "A")
+vismcl("A")
 }
