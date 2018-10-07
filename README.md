@@ -18,4 +18,10 @@ Note: make sure your input file is in the correct format:<br>
 Load the package (outside of this project) with:
     `devtools::install_github("Eleven1996/VISMCL")`
 
+-----------------------------------------------
+Citation:<br>
+https://www.r-graph-gallery.com/circle-packing/ <br>
+https://cran.r-project.org/web/packages/packcircles/vignettes/progressive_packing.html <br>
+Hardley Wickham <R packages>
 
+End
