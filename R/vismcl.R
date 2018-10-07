@@ -125,11 +125,6 @@ CreatDataFrame <- function(filepath) {
 #' @import ggplot2
 #' @import ggiraph
 #' @import packcircles
-#' @examples
-#' temp<-sprintf("%s/R/MCL_example_output",getwd())
-#' vismcl(temp)
-#' vismcl(temp)
-
 
 vismcl <- function(filepath,showName=FALSE,color="grey") {
   x<- y<- id<-NULL
