@@ -25,26 +25,21 @@
 
 # ====  PACKAGES  ==============================================================
 # Load all required packages.
-if (! require(ggplot2, quietly=TRUE)) {
   install.packages("ggplot2")
   library(ggplot2)
-}
+
 # Package information:
 #  library(help = ggplot2)       # basic information
 #  browseVignettes("ggplot2")    # available vignettes
 #  data(package = "ggplot2")     # available datasets
-if (! require(ggiraph, quietly=TRUE)) {
   install.packages("ggiraph")
   library(ggiraph)
-}
 # Package information:
 #  library(help = ggiraph)       # basic information
 #  browseVignettes("ggiraph")    # available vignettes
 #  data(package = "ggiraph")     # available datasets
-if (! require(packcircles, quietly=TRUE)) {
   install.packages("packcircles")
   library(packcircles)
-}
 # Package information:
 #  library(help = packcircles)       # basic information
 #  browseVignettes("packcircles")    # available vignettes
