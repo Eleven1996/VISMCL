@@ -67,6 +67,7 @@ if (! require(packcircles, quietly=TRUE)) {
 #' @section purpose: preparation for create dataframe used for plotting.
 #' @param filepath the filepath of output of MCL.
 #' @return A nested list.
+#' @export
 #' @examples
 #' AddToList("MCL_example_output")
 AddToList <- function(filepath) {
@@ -96,6 +97,7 @@ AddToList <- function(filepath) {
 #' @return a dataframe used for plotting.
 #' @examples
 #' CreatDataFrame("MCL_example_output")
+#' @export
 CreatDataFrame <- function(filepath) {
   Nested_list<-AddToList(filepath)
   elements<-sapply(Nested_list,paste0, collapse=",")
@@ -134,12 +136,14 @@ CreatDataFrame <- function(filepath) {
 vismcl <- function(filepath,showName=FALSE,color="grey") {
   input_df<-CreatDataFrame(filepath)
   #genearte dataframe for the position and size of each circle
+  x.value <- y.value <- id.value <- NULL
+  #get ride of check note
   packing <- circleProgressiveLayout(input_df)
   dat.gg <- circleLayoutVertices(packing,npoints=50)
   if (showName){
     gg<-ggplot(data = dat.gg) +
       geom_polygon_interactive(
-        aes(x, y, group = id,
+        aes(x=x.value, y=y.value, group = id.value,
             tooltip = input_df$Element[id], data_id = id),
         fill=color,
         colour = "black",
