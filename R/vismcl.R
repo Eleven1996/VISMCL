@@ -134,12 +134,12 @@ CreatDataFrame <- function(filepath) {
 
 
 vismcl <- function(filepath,showName=FALSE,color="grey") {
+  x<- y<- id<-NULL
   input_df<-CreatDataFrame(filepath)
   #genearte dataframe for the position and size of each circle
-  x.value <- y.value <- id.value <- NULL
-  #get ride of check note
   packing <- circleProgressiveLayout(input_df)
   dat.gg <- circleLayoutVertices(packing,npoints=50)
+  dat.gg
   if (showName){
     gg<-ggplot(data = dat.gg) +
       geom_polygon_interactive(
