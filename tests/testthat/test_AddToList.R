@@ -10,7 +10,6 @@ nested_list[[2]]<-c("cat","hat","bat")
 nested_list[[3]]<-c("bit","fit")
 nested_list[[4]]<-c("happy","dupoy","abc","def","geee","gooo","cdf")
 
-example_filepath<-sprintf("%s/MCL_example_output",getwd())
 #
 # ==== END SETUP AND PREPARE ===================================================
 

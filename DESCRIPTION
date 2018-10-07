@@ -4,7 +4,7 @@ Title: visualization of MCL output files
 Version: 0.1.0
 Author: Liwen Zhuang
 Maintainer: Liwen Zhuang <zhuangyedda@gmail.com>
-Description: contains functions to visualize output of MCL
+Description: Contains functions to visualize output of MCL. Used circle packing for representing the information.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true

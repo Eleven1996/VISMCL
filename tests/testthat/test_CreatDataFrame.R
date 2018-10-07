@@ -13,7 +13,7 @@ elements<-list(cluster1,cluster2,cluster3,cluster4)
 Elements<-sapply(elements,paste0, collapse=",")
 example_df<-data.frame("Name"=c("cluster1","cluster2","cluster3","cluster4"),"Element"=Elements,"Area"=c(4,3,2,7))
 
-example_filepath<-sprintf("%s/R/MCL_example_output",getwd())
+
 #
 # ==== END SETUP AND PREPARE ===================================================
 
