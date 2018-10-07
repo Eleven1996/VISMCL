@@ -143,7 +143,7 @@ vismcl <- function(filepath,showName=FALSE,color="grey") {
   if (showName){
     gg<-ggplot(data = dat.gg) +
       geom_polygon_interactive(
-        aes(x=x.value, y=y.value, group = id.value,
+        aes(x, y, group = id,
             tooltip = input_df$Element[id], data_id = id),
         fill=color,
         colour = "black",
