@@ -7,11 +7,11 @@ This is a package used to generate a graph to represent the information given by
 
 -----------------------------------------------
 
-Note: make sure your input file is in the correct fomat:
-1.cluster elements seperated by white space
-2.clusters sepearted by newline
-3.no headings or tail
-4.must have a newline at the end of the file
+Note: make sure your input file is in the correct format:<br>
+1.cluster elements seperated by white space<br>
+2.clusters sepearted by newline<br>
+3.no headings or tail<br>
+4.must have a newline at the end of the file<br>
  
 -----------------------------------------------
 
