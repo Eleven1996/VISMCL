@@ -2,9 +2,7 @@
 % Please edit documentation in R/vismcl.R
 \name{CreatDataFrame}
 \alias{CreatDataFrame}
-\title{Title.
-\code{CreatDataFrame.R} creat dataframe used for plotting from nested list
-Details.}
+\title{CreatDataFrame}
 \usage{
 CreatDataFrame(filepath)
 }
@@ -15,10 +13,8 @@ CreatDataFrame(filepath)
 a dataframe used for plotting.
 }
 \description{
-Title.
-\code{CreatDataFrame.R} creat dataframe used for plotting from nested list
-Details.
+creat dataframe used for plotting from nested list
 }
-\examples{
-CreatDataFrame("MCL_example_output")
+\details{
+Details.
 }

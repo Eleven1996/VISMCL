@@ -5,7 +5,7 @@
 # Date:2018-10
 # Author:Liwen Zhuang
 #
-# Input:test files
+# Input:text files
 # Output:circle packing graph
 # Dependencies:ggplot2,ggiraph,packcircles
 #
@@ -17,7 +17,6 @@
 #setwd("<your/project/directory>")
 
 # ====  PARAMETERS  ============================================================
-# Define and explain all parameters. No "magic numbers" in your code below.
 # filepath: A MCL output files without head or tail
 # color: the color filled in the circle
 # showName: if to show the cluster name or not
@@ -52,24 +51,20 @@ if (! require(packcircles, quietly=TRUE)) {
 
 # ====  FUNCTIONS  =============================================================
 
-# Define functions or source external files
-# source("<myUtilityFunctionsScript.R>")
 
 # AddToList.R
-#' Title.
+#' AddToList
 #'
-#' \code{AddToList} add the text file from output of MCL to a nested list. output of MCL files will group
-#' all the elements belong to one cluster in one line,seperated by whitespace. This fuction go through input
-#' file line by line and put elements in same cluster in to a list.
+#' add the text file from output of MCL to a nested list.
 #'
 #'
 #' Details.
 #' @section purpose: preparation for create dataframe used for plotting.
 #' @param filepath the filepath of output of MCL.
 #' @return A nested list.
-#' @export
 #' @examples
-#' AddToList("MCL_example_output")
+#' temp<-sprintf("%s/R/MCL_example_output",getwd())
+#' AddToList(temp)
 AddToList <- function(filepath) {
   if (file.exists(filepath)==FALSE) stop("filepath non-exist")
   res<-list()
@@ -90,14 +85,16 @@ AddToList <- function(filepath) {
 
 
 # CreatDataFrame.R
-#' Title.
-#' \code{CreatDataFrame.R} creat dataframe used for plotting from nested list
+#' CreatDataFrame
+#'
+#' creat dataframe used for plotting from nested list
+#'
 #' Details.
 #' @param filepath filepath of the output of MCL
 #' @return a dataframe used for plotting.
 #' @examples
-#' CreatDataFrame("MCL_example_output")
-#' @export
+#' temp<-sprintf("%s/R/MCL_example_output",getwd())
+#' CreatDataFrame(temp)
 CreatDataFrame <- function(filepath) {
   Nested_list<-AddToList(filepath)
   elements<-sapply(Nested_list,paste0, collapse=",")
@@ -116,9 +113,9 @@ CreatDataFrame <- function(filepath) {
 
 
 # vismcl.R
-#' Title: plot circle packing graph
+#' vismcl
 #'
-#' plot circle packing graph with MCL output file,with interactive display. The input file should not have any head or tail content.
+#' plot circle packing graph
 #'
 #' @param filepath the filepath of the output file of MCL
 #' @param showName if shows the name of clusters,default is FALSE
@@ -129,8 +126,9 @@ CreatDataFrame <- function(filepath) {
 #' @import ggiraph
 #' @import packcircles
 #' @examples
-#' vismcl("MCL_example_output",TRUE,"red")
-#' vismcl("MCL_example_output",FALSE)
+#' temp<-sprintf("%s/R/MCL_example_output",getwd())
+#' vismcl(temp)
+#' vismcl(temp)
 
 
 vismcl <- function(filepath,showName=FALSE,color="grey") {

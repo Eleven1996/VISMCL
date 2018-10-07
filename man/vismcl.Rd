@@ -2,7 +2,7 @@
 % Please edit documentation in R/vismcl.R
 \name{vismcl}
 \alias{vismcl}
-\title{Title: plot circle packing graph}
+\title{vismcl}
 \usage{
 vismcl(filepath, showName = FALSE, color = "grey")
 }
@@ -17,9 +17,9 @@ vismcl(filepath, showName = FALSE, color = "grey")
 a circle packing graph representing the information
 }
 \description{
-plot circle packing graph with MCL output file,with interactive display. The input file should not have any head or tail content.
+plot circle packing graph
 }
 \examples{
-vismcl("MCL_example_output",TRUE,"red")
-vismcl("MCL_example_output",FALSE)
+vismcl(sprintf("\%s/R/MCL_example_output",getwd()),TRUE,"red")
+vismcl(sprintf("\%s/R/MCL_example_output",getwd()),FALSE)
 }

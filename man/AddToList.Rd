@@ -2,7 +2,7 @@
 % Please edit documentation in R/vismcl.R
 \name{AddToList}
 \alias{AddToList}
-\title{Title.}
+\title{AddToList}
 \usage{
 AddToList(filepath)
 }
@@ -13,9 +13,7 @@ AddToList(filepath)
 A nested list.
 }
 \description{
-\code{AddToList} add the text file from output of MCL to a nested list. output of MCL files will group
-all the elements belong to one cluster in one line,seperated by whitespace. This fuction go through input
-file line by line and put elements in same cluster in to a list.
+add the text file from output of MCL to a nested list.
 }
 \details{
 Details.
@@ -24,6 +22,3 @@ Details.
  preparation for create dataframe used for plotting.
 }
 
-\examples{
-AddToList("MCL_example_output")
-}
