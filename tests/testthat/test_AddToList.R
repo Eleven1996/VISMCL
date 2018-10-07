@@ -20,7 +20,7 @@ test_that("corrupt input generates errors",  {
 })
 
 test_that("a sample input prouces the expected output",  {
-  expect_equal(AddToList("C:/Users/liwen/Desktop/410/VISMCL/R/MCL_example_output"), nested_list)
+  expect_equal(AddToList("MCL_example_output"), nested_list)
 })
 
 
