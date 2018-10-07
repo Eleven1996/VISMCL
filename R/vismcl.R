@@ -121,6 +121,9 @@ CreatDataFrame <- function(filepath) {
 #' @import ggplot2
 #' @import ggiraph
 #' @import packcircles
+#' @examples
+#' cat("a aa\n",file = "A")
+#' vismcl("A")
 
 vismcl <- function(filepath,showName=FALSE,color="grey") {
   x<- y<- id<-NULL
