@@ -2,3 +2,6 @@
 
 export(lseq)
 export(vismcl)
+import(ggiraph)
+import(ggplot2)
+import(packcircles)

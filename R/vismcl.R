@@ -123,6 +123,9 @@ CreatDataFrame <- function(filepath) {
 #' @param color A color code:color fill the circle,default is grey#'
 #' @return a circle packing graph representing the information
 #' @export
+#' @import ggplot2
+#' @import ggiraph
+#' @import packcircles
 #' @examples
 #' vismcl("MCL_example_output",TRUE,"red")
 #' vismcl("MCL_example_output",FALSE)
