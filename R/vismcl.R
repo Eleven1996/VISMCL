@@ -62,9 +62,7 @@ if (! require(packcircles, quietly=TRUE)) {
 #' @section purpose: preparation for create dataframe used for plotting.
 #' @param filepath the filepath of output of MCL.
 #' @return A nested list.
-#' @examples
-#' temp<-sprintf("%s/R/MCL_example_output",getwd())
-#' AddToList(temp)
+
 AddToList <- function(filepath) {
   if (file.exists(filepath)==FALSE) stop("filepath non-exist")
   res<-list()
@@ -92,9 +90,7 @@ AddToList <- function(filepath) {
 #' Details.
 #' @param filepath filepath of the output of MCL
 #' @return a dataframe used for plotting.
-#' @examples
-#' temp<-sprintf("%s/R/MCL_example_output",getwd())
-#' CreatDataFrame(temp)
+
 CreatDataFrame <- function(filepath) {
   Nested_list<-AddToList(filepath)
   elements<-sapply(Nested_list,paste0, collapse=",")
