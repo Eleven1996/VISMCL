@@ -4,14 +4,18 @@
 \alias{vismcl}
 \title{vismcl}
 \usage{
-vismcl(filepath, showName = FALSE, color = "grey")
+vismcl(filepath, showName = FALSE, Clusternames = NULL,
+  color = "grey")
 }
 \arguments{
 \item{filepath}{the filepath of the output file of MCL}
 
-\item{showName}{if shows the name of clusters,default is FALSE}
+\item{showName}{(optional)if shows the name of clusters,default is FALSE}
 
-\item{color}{A color code:color fill the circle,default is grey#'}
+\item{Clusternames}{(optional) a vector for user-defined clusternames,
+order should be the same as the lines go.}
+
+\item{color}{(optional)A color code:color fill the circle,default is grey}
 }
 \value{
 a circle packing graph representing the information
@@ -20,6 +24,9 @@ a circle packing graph representing the information
 plot circle packing graph
 }
 \examples{
-cat("a aa\n",file = "A")
+cat("a aa\\n b bbb b\\n",file = "A")
 vismcl("A")
+vismcl("A",showName = TRUE,color = "red")
+Clust_names<-c("a","b")
+vismcl("A",showName = TRUE,Clusternames = Clust_names)
 }

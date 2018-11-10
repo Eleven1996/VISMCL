@@ -18,3 +18,7 @@ creat dataframe used for plotting from nested list
 \details{
 Details.
 }
+\examples{
+cat("a aa\\n",file = "A")
+CreatDataFrame("A")
+}
