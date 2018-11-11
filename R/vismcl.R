@@ -54,11 +54,6 @@ if (! require(packcircles, quietly=TRUE)) {
 #'
 #' add the text file from output of MCL to a nested list.
 #'
-#' @section notes
-#' 1.cluster elements seperated by tab<br>
-#' 2.clusters sepearted by newline<br>
-#' 3.no headings or tail<br>
-#' 4.must have a newline at the end of the file<br>
 #' @param filepath the filepath of output of MCL.
 #' @return A nested list.
 
@@ -88,9 +83,7 @@ AddToList <- function(filepath) {
 #'
 #' @param filepath filepath of the output of MCL
 #' @return a basic dataframe used for plotting.
-#' @examples
-#' cat("a aa\n",file = "A")
-#' CreatDataFrame("A")
+
 
 CreatDataFrame <- function(filepath) {
   Nested_list<-AddToList(filepath)

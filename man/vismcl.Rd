@@ -22,7 +22,7 @@ order should be the same as the lines go.}
 
 \item{HighlightFirstN}{(optional) an integer:highlight the first n largest cluster.}
 
-\item{HightlightColor}{(optional) A color code: color used for highlight, default is green}
+\item{HighlightColor}{(optional) A color code: color used for highlight, default is green}
 }
 \value{
 a circle packing graph representing the information and print the dataframe in the console
