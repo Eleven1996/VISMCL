@@ -80,9 +80,9 @@ AddToList <- function(filepath) {
 #' CreatDataFrame
 #'
 #' creat dataframe used for plotting from nested list
-#' @export
 #' @param filepath filepath of the output of MCL
 #' @return a basic dataframe used for plotting.
+
 
 
 CreatDataFrame <- function(filepath) {
@@ -119,10 +119,10 @@ CreatDataFrame <- function(filepath) {
 #' @import ggplot2
 #' @import ggiraph
 #' @import packcircles
+#' @export
 #' @examples
-#' cat("a aa\n b bbb b\n",file = "example")
-#' exdf<-CreatDataFrame("example")
-#' vismclDfDraw(exdf,showName = TRUE,Clusternames=c("1","2"),
+#' x <- data.frame("Name" = 1:2, "Element" = c("a","b"), "Area" = c(1,1))
+#' vismclDfDraw(x,showName = TRUE,Clusternames=c("1","2"),
 #' color="white",HighlightByName="1",HighlightFirstN=1,HighlightColor="red")
 
 vismclDfDraw <- function(input_df,showName=FALSE,
@@ -258,7 +258,7 @@ vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
 #' @import packcircles
 #' @examples
 #' cat("a aa\n b bbb b\n",file = "example")
-#' vismcl("example",showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
+#' vismclL("example",filter=1,showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
 #'        HighlightFirstN=1,HighlightColor="red")
 
 vismclL <- function(filepath,filter,showName=FALSE,Clusternames=NULL,
