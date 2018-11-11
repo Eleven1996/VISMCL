@@ -258,9 +258,8 @@ vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
 #' @import packcircles
 #' @examples
 #' cat("a aa\n b bbb b\n",file = "example")
-#' vismclL("example",filter=1,showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
+#' vismcl("example",1,showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
 #'        HighlightFirstN=1,HighlightColor="red")
-
 vismclL <- function(filepath,filter,showName=FALSE,Clusternames=NULL,
                     color="grey",HighlightByName=NULL,HighlightFirstN=NULL,HighlightColor="chartreuse1") {
   #create original dataframe
