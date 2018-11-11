@@ -15,10 +15,3 @@ A nested list.
 \description{
 add the text file from output of MCL to a nested list.
 }
-\details{
-Details.
-}
-\section{purpose}{
- preparation for create dataframe used for plotting.
-}
-

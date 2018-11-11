@@ -5,10 +5,10 @@ context("test_AddToList")
 # ==== BEGIN SETUP AND PREPARE =================================================
 #
 nested_list<-list()
-nested_list[[1]]<-c("sing","sang","sun","stain")
-nested_list[[2]]<-c("cat","hat","bat")
-nested_list[[3]]<-c("bit","fit")
-nested_list[[4]]<-c("happy","dupoy","abc","def","geee","gooo","cdf")
+nested_list[[1]]<-c("PtgICMP6369|prot5289","PtoMax13|prot4847","PtoMax13|prot5307","PtoMax13|prot5316","PtoMax13|prot3921")
+nested_list[[2]]<-c("PtgICMP6369|prot2819","PtoMax13|prot5307")
+nested_list[[3]]<-c("PtgICMP6369|prot1903")
+nested_list[[4]]<-c("PtgICMP6369|protssdd","PtoMax13|prot3345","PtoMax13|prot9700")
 
 #
 # ==== END SETUP AND PREPARE ===================================================
@@ -19,7 +19,7 @@ test_that("corrupt input generates errors",  {
 })
 
 test_that("a sample input prouces the expected output",  {
-  expect_equal(AddToList("MCL_example_output"), nested_list)
+  expect_equal(AddToList("../../inst/exampleInput/example1"), nested_list)
 })
 
 

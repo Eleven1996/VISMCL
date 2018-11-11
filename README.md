@@ -8,7 +8,7 @@ This is a package used to generate a graph to represent the information given by
 -----------------------------------------------
 
 Note: make sure your input file is in the correct format:<br>
-1.cluster elements seperated by white space<br>
+1.cluster elements seperated by tab<br>
 2.clusters sepearted by newline<br>
 3.no headings or tail<br>
 4.must have a newline at the end of the file<br>
@@ -23,7 +23,13 @@ If the length of vector provided is less than the number of clusters, it will fi
 If the length of vector provided is more than the number of clusters, it will gives an error. <br>
 4. color: the color of the circle. Default is grey.<br>
 
-Example:
+Example files:<br>
+example files are in inst/exampleInput files, there are two example files:<br>
+(1)example1 is a small example with only 3 clusters,the content are meaningless<br>
+(2)5.group is a larger example,it is the actual result get from PorthoMC,which is the orthologous group
+clusters for 5 genomes.<br>
+
+Example:<br>
 path<-sprintf("%s/inst/exampleInput/example1",getwd())
 nametags<-c("1","2","3","4","6")
 vismcl(path,TRUE,nametags,"blue")

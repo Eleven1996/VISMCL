@@ -10,13 +10,10 @@ CreatDataFrame(filepath)
 \item{filepath}{filepath of the output of MCL}
 }
 \value{
-a dataframe used for plotting.
+a basic dataframe used for plotting.
 }
 \description{
 creat dataframe used for plotting from nested list
-}
-\details{
-Details.
 }
 \examples{
 cat("a aa\\n",file = "A")
