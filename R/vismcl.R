@@ -121,7 +121,7 @@ CreatDataFrame <- function(filepath) {
 #' order should be the same as the lines go.
 #' @param HighlightByName (optional) a vector of cluster names which user wish to highlight.
 #' @param HighlightFirstN (optional) an integer:highlight the first n largest cluster.
-#' @param HightlightColor (optional) A color code: color used for highlight, default is green
+#' @param HighlightColor (optional) A color code: color used for highlight, default is green
 #' @return a circle packing graph representing the information
 #' @import ggplot2
 #' @import ggiraph
@@ -224,7 +224,7 @@ vismclDfDraw <- function(input_df,showName=FALSE,
 #' order should be the same as the lines go.
 #' @param HighlightByName (optional) a vector of cluster names which user wish to highlight.
 #' @param HighlightFirstN (optional) an integer:highlight the first n largest cluster.
-#' @param HightlightColor (optional) A color code: color used for highlight, default is green
+#' @param HighlightColor (optional) A color code: color used for highlight, default is green
 #' @return a circle packing graph representing the information and print the dataframe in the console
 #' @export
 #' @import ggplot2
@@ -257,7 +257,7 @@ vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
 #' order should be the same as the lines go.
 #' @param HighlightByName (optional) a vector of cluster names which user wish to highlight.
 #' @param HighlightFirstN (optional) an integer:highlight the first n largest cluster.
-#' @param HightlightColor (optional) A color code: color used for highlight, default is green
+#' @param HighlightColor (optional) A color code: color used for highlight, default is green
 #' @return a circle packing graph representing the information
 #' @export
 #' @import ggplot2

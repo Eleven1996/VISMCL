@@ -19,7 +19,7 @@ test_that("corrupt input generates errors",  {
 })
 
 test_that("a sample input prouces the expected output",  {
-  expect_equal(AddToList("../../inst/exampleInput/example1"), nested_list)
+  expect_equal(AddToList("testexample"), nested_list)
 })
 
 

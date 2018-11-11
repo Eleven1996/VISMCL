@@ -23,7 +23,7 @@ test_that("corrupt input generates errors",  {
 })
 
 test_that("a sample input prouces the expected output",  {
-  expect_equal(CreatDataFrame("../../inst/exampleInput/example1"), example_df)
+  expect_equal(CreatDataFrame("testexample"), example_df)
 })
 
 
