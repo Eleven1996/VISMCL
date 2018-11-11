@@ -80,7 +80,7 @@ AddToList <- function(filepath) {
 #' CreatDataFrame
 #'
 #' creat dataframe used for plotting from nested list
-#'
+#' @export
 #' @param filepath filepath of the output of MCL
 #' @return a basic dataframe used for plotting.
 

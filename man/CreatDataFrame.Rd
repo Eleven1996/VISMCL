@@ -15,7 +15,3 @@ a basic dataframe used for plotting.
 \description{
 creat dataframe used for plotting from nested list
 }
-\examples{
-cat("a aa\\n",file = "A")
-CreatDataFrame("A")
-}
