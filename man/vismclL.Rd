@@ -36,6 +36,6 @@ with an extra filter attribute to only print the largest n clusters
 }
 \examples{
 cat("a aa\\n b bbb b\\n",file = "example")
-vismclL("example",filter=1,showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
+vismcl("example",1,showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
        HighlightFirstN=1,HighlightColor="red")
 }
