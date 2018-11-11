@@ -31,8 +31,7 @@ a circle packing graph representing the information
 plot circle packing graph with data frame.
 }
 \examples{
-cat("a aa\\n b bbb b\\n",file = "example")
-exdf<-CreatDataFrame("example")
-vismclDfDraw(exdf,showName = TRUE,Clusternames=c("1","2"),
+x <- data.frame("Name" = 1:2, "Element" = c("a","b"), "Area" = c(1,1))
+vismclDfDraw(x,showName = TRUE,Clusternames=c("1","2"),
 color="white",HighlightByName="1",HighlightFirstN=1,HighlightColor="red")
 }
