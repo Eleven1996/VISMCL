@@ -1,0 +1,34 @@
+---
+title: "Vignette Title"
+author: "Liwen Zhuang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{VISMCL}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+Vismcl is a cluster visualization tool, it support user-defined cluster name and different way to highlight specific cluster，
+it also include a user-friendly shiny app interface.
+
+## Input Info
+Input for VISMCL should be a text file(usually produced by MCL) path,the file need to be:
+
+- Have no headings or tail
+- Elements in one cluster are stayed in one line, seperated by tab
+- Include a newline at the end of the file.
+
+
+## Functions
+
+- vismcl：This is the basic function used to plot clusters.It will print the dataframe created from the file.
+- vismclL：This is a mode specifically for large input file,it adds a new attribute filterN, this limit the number
+of clusters shown. Also, under this mode, the result dataframe will not be printed
+- runvismclApp：This function use shiny app to create a user-friendly interface.

@@ -1,16 +1,16 @@
-# vismcl
+# vismclprep
 #
-# Purpose:creating a circle packing graph for output of MCL (Markov Cluster Algorithm) files
-# Version:2.0.0
+# Purpose:preparation for vismcl and vismclL
+# Version:3.0.0
 # Date:2018-11
 # Author:Liwen Zhuang
 #
-# Input:text files
+# Input:text files path or dataframe
 # Output:circle packing graph
 # Dependencies:ggplot2,ggiraph,packcircles
 #
 # ====  PARAMETERS  ============================================================
-# filepath: A MCL output files without head or tail
+# filepath: A MCL output files,element seperated by tab
 # input_df: A dataframe used for plotting
 # color: the color filled in the circle
 # showName: if to show the cluster name or not
@@ -83,8 +83,6 @@ AddToList <- function(filepath) {
 #' @param filepath filepath of the output of MCL
 #' @return a basic dataframe used for plotting.
 
-
-
 CreatDataFrame <- function(filepath) {
   Nested_list<-AddToList(filepath)
   elements<-sapply(Nested_list,paste0, collapse=",")
@@ -119,17 +117,13 @@ CreatDataFrame <- function(filepath) {
 #' @import ggplot2
 #' @import ggiraph
 #' @import packcircles
-#' @export
-#' @examples
-#' x <- data.frame("Name" = 1:2, "Element" = c("a","b"), "Area" = c(1,1))
-#' vismclDfDraw(x,showName = TRUE,Clusternames=c("1","2"),
-#' color="white",HighlightByName="1",HighlightFirstN=1,HighlightColor="red")
+
 
 vismclDfDraw <- function(input_df,showName=FALSE,
                          Clusternames=NULL,color="grey",HighlightByName=NULL,
                          HighlightFirstN=0,HighlightColor="chartreuse1") {
   #for package checking
-  #x<- y<- id<-NULL
+  x<- y<- id<-NULL
 
   #add Color column
   colors<-c()
@@ -145,18 +139,25 @@ vismclDfDraw <- function(input_df,showName=FALSE,
       }
     }
   }
+
+  #Highlight First N
   #cutoff is the nth largest area size
-  cutoff<-sort(input_df$Area,TRUE)[HighlightFirstN]
   #change all the cluster with area larger than cutoff to highlight color
   if (!(HighlightFirstN==0)){
-    if (HighlightFirstN > length(Clusternames)){
-      warning("trying to highlight more than total number of clusters")
-      HighlightFirstN<-length(Clusternames)
+    #error checking
+    if (HighlightFirstN > nrow(input_df)|| HighlightFirstN < 0){
+      warning("invalid input:trying to highlight more than total number of clusters or number less than 0,")
     }
-    print("highlight cluster with more than %d elements.",cutoff)
-    for (i in 1:nrow(input_df)){
-      if (input_df$Area[i]>=cutoff){
-        input_df$Color[i]<-HighlightColor
+    else if ((HighlightFirstN-round(HighlightFirstN))!=0){
+      warning("invalid input: input is not an integer")
+    }
+    else{
+      cutoff<-sort(input_df$Area,TRUE)[HighlightFirstN]
+      cat(sprintf("highlight cluster with more than %d elements.\n",cutoff))
+      for (i in 1:nrow(input_df)){
+        if (input_df$Area[i]>=cutoff){
+          input_df$Color[i]<-HighlightColor
+        }
       }
     }
   }
@@ -205,77 +206,12 @@ vismclDfDraw <- function(input_df,showName=FALSE,
   if(showName){
     gg<-gg+geom_text(data=packing,aes(x,y),label= input_df$Name)
   }
-  res<-ggiraph(ggobj = gg, width_svg = 5, height_svg = 5,selection_type = 'multiple')
+  res<-ggiraph(ggobj = gg, width_svg = 5, height_svg = 5,selection_type = 'multiple',
+               hover_css = "cursor:pointer;fill:orange;stroke:black;")
   return(res)
 }
 
 
-# vismcl.R
-#' vismcl
-#'
-#' plot circle packing graph with given filepath,recommand vismclL for very large input data
-#'
-#' @param filepath the filepath of the output file of MCL
-#' @param showName (optional)if shows the name of clusters,default is FALSE
-#' @param color (optional)A color code:color fill the circle,default is grey
-#' @param Clusternames (optional) a vector for user-defined clusternames,
-#' order should be the same as the lines go.
-#' @param HighlightByName (optional) a vector of cluster names which user wish to highlight.
-#' @param HighlightFirstN (optional) an integer:highlight the first n largest cluster.
-#' @param HighlightColor (optional) A color code: color used for highlight, default is green
-#' @return a circle packing graph representing the information and print the dataframe in the console
-#' @export
-#' @import ggplot2
-#' @import ggiraph
-#' @import packcircles
-#' @examples
-#' cat("a aa\n b bbb b\n",file = "example")
-#' vismcl("example",showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
-#'        HighlightFirstN=1,HighlightColor="red")
-vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
-                   color="grey",HighlightByName=NULL,HighlightFirstN=0,HighlightColor="chartreuse1") {
-  #create dataframe
-  input_df<-CreatDataFrame(filepath)
-  print(input_df)
-  vismclDfDraw(input_df,showName,Clusternames,color,HighlightByName,HighlightFirstN,HighlightColor)
-}
-
-# vismclL.R
-#' vismclL
-#'
-#' plot circle packing graph with given filepath,
-#' with an extra filter attribute to only print the largest n clusters
-#'
-#' @param filepath the filepath of the output file of MCL
-#' @param filter the first n largest clusters will be plotted. if there are more than one
-#' cluster with the cutoff size,vismclL will print all of them.
-#' @param showName (optional)if shows the name of clusters,default is FALSE
-#' @param color (optional)A color code:color fill the circle,default is grey
-#' @param Clusternames (optional) a vector for user-defined clusternames,
-#' order should be the same as the lines go.
-#' @param HighlightByName (optional) a vector of cluster names which user wish to highlight.
-#' @param HighlightFirstN (optional) an integer:highlight the first n largest cluster.
-#' @param HighlightColor (optional) A color code: color used for highlight, default is green
-#' @return a circle packing graph representing the information
-#' @export
-#' @import ggplot2
-#' @import ggiraph
-#' @import packcircles
-#' @examples
-#' cat("a aa\n b bbb b\n",file = "example")
-#' vismclL("example",1,TRUE,c("1","2"),"white","1",1,"red")
-vismclL <- function(filepath,filter,showName=FALSE,Clusternames=NULL,
-                    color="grey",HighlightByName=0,HighlightFirstN=NULL,HighlightColor="chartreuse1") {
-  #create original dataframe
-  input_df<-CreatDataFrame(filepath)
-  cutoff<-sort(input_df$Area,TRUE)[filter]
-  cat(sprintf("showing cluster size larger than %d",cutoff))
-  NewDF<-input_df[input_df$Area >= cutoff,]
-  vismclDfDraw(NewDF,showName,Clusternames,color,HighlightByName,HighlightFirstN,HighlightColor)
-}
-
-
-# [END]
 
 # ====  PROCESS  ===============================================================
 # Enter the step-by-step process of your project here. Strive to write your
