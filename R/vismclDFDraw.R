@@ -5,7 +5,7 @@
 # Date:2018-11
 # Author:Liwen Zhuang
 #
-# Input:text files path or dataframe
+# Input:text files path
 # Output:circle packing graph
 # Dependencies:ggplot2,ggiraph,packcircles
 #

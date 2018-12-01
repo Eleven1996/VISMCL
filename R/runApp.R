@@ -1,8 +1,8 @@
 # runvismclApp.R
 
-#' \code{runRptApp} launch the shiny app distributed with this package framework
+#' \code{runvismclApp} launch the shiny app distributed with this package framework
 #'
-#' \code{runRptApp} launches the shiny app for which the code has been placed in  \code{./inst/shiny-scripts/vismclApp/}.
+#' \code{runvismclApp} launches the shiny app for which the code has been placed in  \code{./inst/shiny-scripts/vismclApp/}.
 #' @export
 
 runvismclApp <- function() {

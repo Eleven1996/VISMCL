@@ -14,14 +14,18 @@ Note: make sure your input file is in the correct format:<br>
 4.must have a newline at the end of the file<br>
 
 Instructions:<br>
-this package only contain one function "vismcl"<br>
-it has four argument,except the first one, the rest are optional:<br>
-1. filepath: this is the filepath of MCL output file.<br>
-2. showName: if argument is TRUE, the cluster name will show on the cycle.Default is FALSE<br>
-3. Clusternames: user can define a vector containing the names of each cluster,the order of the name should be the same order of MCL output file(e.g first line->first cluster->first element in the vector).Defult is NULL. <br>
+this package contain three functions "vismcl","vismclL" and "runvismclAPP" <br>
+both "vismcl" and "vismclL" have following parameters:<br>
+1. filepath:(required) this is the filepath of MCL output file.<br>
+2. showName:(optional) if argument is TRUE, the cluster name will show on the cycle.Default is FALSE<br>
+3. Clusternames: (optional)user can define a vector containing the names of each cluster,the order of the name should be the same order of MCL output file(e.g first line->first cluster->first element in the vector).Defult is NULL. <br>
 If the length of vector provided is less than the number of clusters, it will fill up the rest with automatically formed names and produce the result,and gives a warning. <br>
 If the length of vector provided is more than the number of clusters, it will gives an error. <br>
-4. color: the color of the circle. Default is grey.<br>
+4. color:(optional) the color of the circle. Default is grey.<br>
+5. HighlightByName:(optional) The name of the clusters you want to highlight.
+5. HighlightFirstN:(optional) a number n,it will highlight the first n largest cluster.
+7. HighlightColor:(optional) color code used for highlighint.
+vismclL has an extra parameter filterN: it will only show the largest N cluster in the result graph.
 
 Example files:<br>
 example files are in inst/exampleInput files, there are two example files:<br>
@@ -30,9 +34,15 @@ example files are in inst/exampleInput files, there are two example files:<br>
 clusters for 5 genomes.<br>
 
 Example:<br>
-path<-sprintf("%s/inst/exampleInput/example1",getwd())
-nametags<-c("1","2","3","4","6")
-vismcl(path,TRUE,nametags,"blue")
+> path<-sprintf("%s/inst/exampleInput/example1",getwd())
+> nametags<-c("1","2","3","4")
+> vismcl(filepath=path,showName=TRUE,Clusternames=nametags,
+                   color="grey",HighlightByName="1",HighlightColor="chartreuse1")
+> vismclL(filepath=path,filterN=3,showName=TRUE,HighlightFirstN=1)
+
+Example shiny usage:
+> runvismclAPP()
+
 
 -----------------------------------------------
 

@@ -1,4 +1,15 @@
-# vismcl.R
+# vismcl(L).R
+#
+# Purpose:main functions of vismcl and vismclL
+# Version:3.0.0
+# Date:2018-11
+# Author:Liwen Zhuang
+#
+# Input:text files path
+# Output:circle packing graph
+# Dependencies:ggplot2,ggiraph,packcircles
+#
+# ========
 #' vismcl
 #'
 #' plot circle packing graph with given filepath,recommand vismclL for very large input data
