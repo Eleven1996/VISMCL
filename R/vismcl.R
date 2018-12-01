@@ -126,9 +126,10 @@ CreatDataFrame <- function(filepath) {
 #' color="white",HighlightByName="1",HighlightFirstN=1,HighlightColor="red")
 
 vismclDfDraw <- function(input_df,showName=FALSE,
-                         Clusternames=NULL,color="grey",HighlightByName=NULL,HighlightFirstN=NULL,HighlightColor="chartreuse1") {
+                         Clusternames=NULL,color="grey",HighlightByName=NULL,
+                         HighlightFirstN=0,HighlightColor="chartreuse1") {
   #for package checking
-  x<- y<- id<-NULL
+  #x<- y<- id<-NULL
 
   #add Color column
   colors<-c()
@@ -147,7 +148,11 @@ vismclDfDraw <- function(input_df,showName=FALSE,
   #cutoff is the nth largest area size
   cutoff<-sort(input_df$Area,TRUE)[HighlightFirstN]
   #change all the cluster with area larger than cutoff to highlight color
-  if (!is.null(HighlightFirstN)){
+  if (!(HighlightFirstN==0)){
+    if (HighlightFirstN > length(Clusternames)){
+      warning("trying to highlight more than total number of clusters")
+      HighlightFirstN<-length(Clusternames)
+    }
     print("highlight cluster with more than %d elements.",cutoff)
     for (i in 1:nrow(input_df)){
       if (input_df$Area[i]>=cutoff){
@@ -200,7 +205,7 @@ vismclDfDraw <- function(input_df,showName=FALSE,
   if(showName){
     gg<-gg+geom_text(data=packing,aes(x,y),label= input_df$Name)
   }
-  res<-ggiraph(ggobj = gg, width_svg = 5, height_svg = 5)
+  res<-ggiraph(ggobj = gg, width_svg = 5, height_svg = 5,selection_type = 'multiple')
   return(res)
 }
 
@@ -228,7 +233,7 @@ vismclDfDraw <- function(input_df,showName=FALSE,
 #' vismcl("example",showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
 #'        HighlightFirstN=1,HighlightColor="red")
 vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
-                   color="grey",HighlightByName=NULL,HighlightFirstN=NULL,HighlightColor="chartreuse1") {
+                   color="grey",HighlightByName=NULL,HighlightFirstN=0,HighlightColor="chartreuse1") {
   #create dataframe
   input_df<-CreatDataFrame(filepath)
   print(input_df)
@@ -260,7 +265,7 @@ vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
 #' cat("a aa\n b bbb b\n",file = "example")
 #' vismclL("example",1,TRUE,c("1","2"),"white","1",1,"red")
 vismclL <- function(filepath,filter,showName=FALSE,Clusternames=NULL,
-                    color="grey",HighlightByName=NULL,HighlightFirstN=NULL,HighlightColor="chartreuse1") {
+                    color="grey",HighlightByName=0,HighlightFirstN=NULL,HighlightColor="chartreuse1") {
   #create original dataframe
   input_df<-CreatDataFrame(filepath)
   cutoff<-sort(input_df$Area,TRUE)[filter]
