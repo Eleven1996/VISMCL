@@ -24,9 +24,6 @@
 #' @param HighlightColor (optional) A color code: color used for highlight, default is green
 #' @return a circle packing graph representing the information and print the dataframe in the console
 #' @export
-#' @import ggplot2
-#' @import ggiraph
-#' @import packcircles
 #' @examples
 #' cat("a aa\n b bbb b\n",file = "example")
 #' vismcl("example",showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
@@ -44,7 +41,7 @@ vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
 #'
 #' plot circle packing graph with given filepath,
 #' with an extra filter attribute to only print the largest n clusters,
-#' also will not print the processed data frame
+#' will NOT print the processed data frame
 #'
 #' @param filepath the filepath of the output file of MCL
 #' @param filterN the first n largest clusters will be plotted. if there are more than one
@@ -58,9 +55,6 @@ vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
 #' @param HighlightColor (optional) A color code: color used for highlight, default is green
 #' @return a circle packing graph representing the information
 #' @export
-#' @import ggplot2
-#' @import ggiraph
-#' @import packcircles
 #' @examples
 #' cat("a aa\n b bbb b\n",file = "example")
 #' vismclL("example")
@@ -68,7 +62,7 @@ vismclL <- function(filepath,filterN=0,showName=FALSE,Clusternames=NULL,
                     color="grey",HighlightByName=0,HighlightFirstN=0,HighlightColor="chartreuse1") {
   #create original dataframe
   input_df<-CreatDataFrame(filepath)
-  #error checking
+  #error checking to make sure filterN has valid value
   if (!(filterN==0)){
     if( filterN > nrow(input_df)|| (filterN-round(filterN))!=0 ){
       stop("invalid filterN input: more than total number of clusters or not a integer")

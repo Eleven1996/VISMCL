@@ -1,18 +1,10 @@
 # app.R
 # shiny script for vismcl
 #
-#
-#=== load required packages===
-if (! require(shiny, quietly=TRUE)) {
-  install.packages("shiny")
-  library(shiny)
-}
-if (! require(colourpicker, quietly=TRUE)) {
-  install.packages("colourpicker")
-  library(colourpicker)
-}
+# reference https://github.com/hyginn/rptPlus
 
-
+library(shiny)
+library(colourpicker)
 # Define UI for my app
 myUi <- fluidPage(
 
@@ -21,10 +13,10 @@ myUi <- fluidPage(
   sidebarLayout(position = "right",
                 sidebarPanel(
                   fileInput(inputId = "inputfile",label = "Choose your input file"),
-                  colourInput("col", "Select cluster color",value =  "white"),
+                  colourpicker::colourInput("col", "Select cluster color",value =  "white"),
                   checkboxInput("showName","Show the name of cluster",value=FALSE),
                   textInput("highlightName",label = "highlight cluster name",value = "name"),
-                  colourInput("highlightcol","Select your highlight color","red"),
+                  colourpicker::colourInput("highlightcol","Select your highlight color","red"),
                   sliderInput("clusterN","choose the number of clusters you want to show",min = 0,max = 10,value = 1),
                   helpText("When choose 0 as number of clusters shown, it will show all the clusters.")
                 ),
@@ -36,14 +28,16 @@ myUi <- fluidPage(
 
   )
 )
-
+# define my server
 myServer <- function(input, output) {
   output$circular <-renderggiraph({
-    # For initiation
+
+    # For initiation e.g no inputfile
     inFile<-input$inputfile
     if(is.null(inFile)){
       return(NULL)
     }
+
     # get path of the temp file
     path<-input$inputfile$datapath
     input_df<-CreatDataFrame(path)
@@ -53,7 +47,10 @@ myServer <- function(input, output) {
     else{
       acturalclusterN<-input$clusterN
     }
-    vismclL(path,filterN=acturalclusterN,color = input$col,HighlightColor = input$highlightcol,showName = input$showName,
+
+    #use L mode:I do not want show the dataframe information everytime user change input
+    vismclL(path,filterN=acturalclusterN,color = input$col,
+            HighlightColor = input$highlightcol,showName = input$showName,
            HighlightByName = input$highlightName)
   })
 

@@ -3,6 +3,4 @@
 export(runvismclApp)
 export(vismcl)
 export(vismclL)
-import(ggiraph)
 import(ggplot2)
-import(packcircles)

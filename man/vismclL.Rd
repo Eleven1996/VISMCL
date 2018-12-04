@@ -33,7 +33,7 @@ a circle packing graph representing the information
 \description{
 plot circle packing graph with given filepath,
 with an extra filter attribute to only print the largest n clusters,
-also will not print the processed data frame
+will NOT print the processed data frame
 }
 \examples{
 cat("a aa\\n b bbb b\\n",file = "example")

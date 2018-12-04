@@ -26,11 +26,4 @@ test_that("a sample input prouces the expected output",  {
   expect_equal(CreatDataFrame("testexample"), example_df)
 })
 
-
-# ==== BEGIN TEARDOWN AND RESTORE ==============================================
-# Remove every persitent construct that the test has created, except for
-# stuff in tempdir().
-#
-# ==== END  TEARDOWN AND RESTORE ===============================================
-
 # [END]

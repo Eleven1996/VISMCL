@@ -2,10 +2,10 @@
 % Please edit documentation in R/runApp.R
 \name{runvismclApp}
 \alias{runvismclApp}
-\title{\code{runRptApp} launch the shiny app distributed with this package framework}
+\title{\code{runvismclApp} launch the shiny app distributed with this package framework}
 \usage{
 runvismclApp()
 }
 \description{
-\code{runRptApp} launches the shiny app for which the code has been placed in  \code{./inst/shiny-scripts/vismclApp/}.
+\code{runvismclApp} launches the shiny app for which the code has been placed in  \code{./inst/shiny-scripts/vismclApp/}.
 }

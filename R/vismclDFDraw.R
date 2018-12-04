@@ -18,36 +18,7 @@
 # HighlightByName: a cluster name string which user want to hightlight
 # HighlightFirstN: a number, hightlight the largest n clusters
 # HighlightColor: a string represent a code name,used for highlighting
-
-# ====  PACKAGES  ==============================================================
-# Load all required packages.
-if (! require(ggplot2, quietly=TRUE)) {
-  install.packages("ggplot2")
-  library(ggplot2)
-}
-# Package information:
-#  library(help = ggplot2)       # basic information
-#  browseVignettes("ggplot2")    # available vignettes
-#  data(package = "ggplot2")     # available datasets
-if (! require(ggiraph, quietly=TRUE)) {
-  install.packages("ggiraph")
-  library(ggiraph)
-}
-# Package information:
-#  library(help = ggiraph)       # basic information
-#  browseVignettes("ggiraph")    # available vignettes
-#  data(package = "ggiraph")     # available datasets
-if (! require(packcircles, quietly=TRUE)) {
-  install.packages("packcircles")
-  library(packcircles)
-}
-# Package information:
-#  library(help = packcircles)       # basic information
-#  browseVignettes("packcircles")    # available vignettes
-#  data(package = "packcircles")     # available datasets
-
 # ====  FUNCTIONS  =============================================================
-
 
 # AddToList.R
 #' AddToList
@@ -113,11 +84,8 @@ CreatDataFrame <- function(filepath) {
 #' @param HighlightByName (optional) a vector of cluster names which user wish to highlight.
 #' @param HighlightFirstN (optional) an integer:highlight the first n largest cluster.
 #' @param HighlightColor (optional) A color code: color used for highlight, default is green
-#' @return a circle packing graph representing the information
 #' @import ggplot2
-#' @import ggiraph
-#' @import packcircles
-
+#' @return a circle packing graph representing the information
 
 vismclDfDraw <- function(input_df,showName=FALSE,
                          Clusternames=NULL,color="grey",HighlightByName=NULL,
@@ -182,10 +150,10 @@ vismclDfDraw <- function(input_df,showName=FALSE,
   }
 
   #draw according to the dataframe
-  packing <- circleProgressiveLayout(input_df$Area)
-  dat.gg <- circleLayoutVertices(packing,npoints=50)
+  packing <- packcircles::circleProgressiveLayout(input_df$Area)
+  dat.gg <- packcircles::circleLayoutVertices(packing,npoints=50)
   gg<-ggplot(data = dat.gg) +
-    geom_polygon_interactive(
+    ggiraph::geom_polygon_interactive(
       aes(x, y, group = id,fill= factor(id),tooltip = input_df$Element[id], data_id = id),
       colour = "black",
       show.legend = FALSE
@@ -206,7 +174,7 @@ vismclDfDraw <- function(input_df,showName=FALSE,
   if(showName){
     gg<-gg+geom_text(data=packing,aes(x,y),label= input_df$Name)
   }
-  res<-ggiraph(ggobj = gg, width_svg = 5, height_svg = 5,selection_type = 'multiple',
+  res<-ggiraph::ggiraph(ggobj = gg, width_svg = 5, height_svg = 5,selection_type = 'multiple',
                hover_css = "cursor:pointer;fill:orange;stroke:black;")
   return(res)
 }
