@@ -28,6 +28,8 @@
 #' cat("a aa\n b bbb b\n",file = "example")
 #' vismcl("example",showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
 #'        HighlightFirstN=1,HighlightColor="red")
+#' vismcl("example")
+#' vismcl("example",showName = TRUE)
 vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
                    color="grey",HighlightByName=NULL,HighlightFirstN=0,HighlightColor="chartreuse1") {
   #create dataframe
@@ -58,6 +60,8 @@ vismcl <- function(filepath,showName=FALSE,Clusternames=NULL,
 #' @examples
 #' cat("a aa\n b bbb b\n",file = "example")
 #' vismclL("example")
+#' vismclL("example",filter=1)
+#' vismclL("example",filter=1,showName=TRUE)
 vismclL <- function(filepath,filterN=0,showName=FALSE,Clusternames=NULL,
                     color="grey",HighlightByName=0,HighlightFirstN=0,HighlightColor="chartreuse1") {
   #create original dataframe

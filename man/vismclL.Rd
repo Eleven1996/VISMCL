@@ -38,4 +38,6 @@ will NOT print the processed data frame
 \examples{
 cat("a aa\\n b bbb b\\n",file = "example")
 vismclL("example")
+vismclL("example",filter=1)
+vismclL("example",filter=1,showName=TRUE)
 }

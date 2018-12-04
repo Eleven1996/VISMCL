@@ -34,4 +34,6 @@ plot circle packing graph with given filepath,recommand vismclL for very large i
 cat("a aa\\n b bbb b\\n",file = "example")
 vismcl("example",showName = TRUE,Clusternames=c("1","2"),color="white",HighlightByName="1",
        HighlightFirstN=1,HighlightColor="red")
+vismcl("example")
+vismcl("example",showName = TRUE)
 }

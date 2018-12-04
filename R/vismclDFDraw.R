@@ -100,12 +100,19 @@ vismclDfDraw <- function(input_df,showName=FALSE,
   }
   input_df$Color<-colors
   #change Color to Highlight color if user gives cluster name
+  #findName are used for error checking
+  findName<-0
   if (!is.null(HighlightByName)){
     for (i in 1:nrow(input_df)){
       if (input_df$Name[i] %in% HighlightByName){
         input_df$Color[i]<-HighlightColor
+        findName<-1
       }
     }
+    if (findName==0){
+      warning("Invalid input: cluster name does not exist")
+    }
+
   }
 
   #Highlight First N
@@ -114,7 +121,7 @@ vismclDfDraw <- function(input_df,showName=FALSE,
   if (!(HighlightFirstN==0)){
     #error checking
     if (HighlightFirstN > nrow(input_df)|| HighlightFirstN < 0){
-      warning("invalid input:trying to highlight more than total number of clusters or number less than 0,")
+      warning("invalid input:trying to highlight more than total number of clusters or number less than 0.")
     }
     else if ((HighlightFirstN-round(HighlightFirstN))!=0){
       warning("invalid input: input is not an integer")

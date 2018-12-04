@@ -15,8 +15,12 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-Vismcl is a cluster visualization tool, it support user-defined cluster name and different way to highlight specific cluster，
-it also include a user-friendly shiny app interface.
+Vismcl is a cluster visualization tool, it supports user-defined cluster name and different way to highlight specific cluster, user can also adjust the number of clusters he/she wants to show.
+
+This package also include a user-friendly shiny app interface.Just type <code> runvismclApp() </code> in console
+
+Hope this package can help you view cluster in a better way.:)
+
 
 ## Input Info
 Input for VISMCL should be a text file(usually produced by MCL) path,the file need to be:
@@ -29,6 +33,5 @@ Input for VISMCL should be a text file(usually produced by MCL) path,the file ne
 ## Functions
 
 - vismcl：This is the basic function used to plot clusters.It will print the dataframe created from the file.
-- vismclL：This is a mode specifically for large input file,it adds a new attribute filterN, this limit the number
-of clusters shown. Also, under this mode, the result dataframe will not be printed
+- vismclL：This is specifically designed for large input file,it adds a new attribute filterN, this limit the number. Also when using vismclL, the dataframe will not be printed as vismcl do. Except these minor differences,the output is the same as vismcl.
 - runvismclApp：This function use shiny app to create a user-friendly interface.
